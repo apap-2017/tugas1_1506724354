@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		
+			<div>
+				<form action="/penduduk" method="get">
+					<div>
+						<label for="nik">Masukkan Nomor Induk Kependudukan</label> 
+						<input type = "text" name = "nik"/>
+					</div>
+					<button type="submit">Lihat</button>
+				</form>
+				<form action="/keluarga" method="get">
+					<div>
+						<label for="nkk">Masukkan Nomor Induk Kependudukan</label> 
+						<input type = "text" name = "nkk"/>
+					</div>
+					<button type="submit">Lihat</button>
+				</form>
+			</div>
+		<div th:replace="fragments/fragment :: footer"></div>
+	</body>
+</html>

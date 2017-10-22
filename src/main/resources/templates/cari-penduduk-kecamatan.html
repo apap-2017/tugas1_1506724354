@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+	<div th:replace="fragments/fragment :: header"></div>
+		<form method="get">
+			<div>
+				<label for="kt">Kota</label>
+					<select name = "kt">
+						<option th:each="allKota, iterationStatus : ${allKota}" th:value="${allKota.id}" th:text="${allKota.nama_kota}" th:readonly="true"></option>
+					</select>
+			</div>
+			<div>
+				<label for="kc">Kecamatan</label>
+					<select name = "kc">
+						<option th:each="allKecamatan, iterationStatus : ${allKecamatan}" th:value="${allKecamatan.id}" th:text="${allKecamatan.nama_kecamatan}"></option>
+					</select>
+			</div>
+			<button type="submit" value="submit">Lihat</button>
+		</form>
+		<div th:replace="fragments/fragment :: footer"></div>
+	</body>
+</html>

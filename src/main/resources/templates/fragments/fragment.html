@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Fragment</title>
+</head>
+<body>
+<div th:fragment="header">
+<link rel="stylesheet" href="/css/bootstrap.min.css" /> 
+<div class="navbar">
+  <a href="/">Halaman Utama</a>
+  <a href="/penduduk/tambah">Tambah Penduduk</a>
+
+  <a href="/penduduk/cari">Cari Penduduk</a>  
+  <a href="/keluarga/tambah">Tambah Keluarga</a>
+</div>
+<hr/>
+</div>
+<div th:fragment="footer">
+<hr/>
+<h4>Valian Fil Ahli - APAP B - 1506724354</h4>
+</div>
+</body>
+</html>

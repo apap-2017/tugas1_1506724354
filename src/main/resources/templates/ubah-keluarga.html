@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+	<div th:replace="fragments/fragment :: header"></div>
+			<div>
+				<form th:object="${keluarga}" method="post" action="">
+					<div>
+						<label for="alamat">Alamat</label> 
+						<input th:field="*{alamat}" type = "text" th:value="${keluarga.alamat}"/>
+					</div>
+					<div>
+						<label for="rt">RT</label> 
+						<input th:field="*{rt}" type = "text" th:value="${keluarga.rt}"/>
+					</div>
+					<div>
+						<label for="rw">RW</label> 
+						<input th:field="*{rw}" type = "text" th:value="${keluarga.rw}"/>
+					</div>
+					<div>
+						<label for="id_kelurahan">Kelurahan</label>
+						<select th:field ="*{id_kelurahan}">
+							<option th:each="allKelurahan, iterationStatus : ${allKelurahan}" th:value="${allKelurahan.id}" th:text="${allKelurahan.nama_kelurahan}"></option>
+						</select>
+					</div>
+					<div>
+						<input name="year" type="hidden" th:value="${#dates.format(#dates.createNow(), 'yy')}"/>
+						<input name="month" type="hidden" th:value="${#dates.format(#dates.createNow(), 'MM')}"/>
+						<input name="day" type="hidden" th:value="${#dates.format(#dates.createNow(), 'dd')}"/>
+						<input th:field="*{id}" type = "hidden" th:value="${keluarga.id}"/>
+					</div>
+					<button type="submit" value="submit">Simpan</button>
+				</form>
+			</div>
+					<div th:replace="fragments/fragment :: footer"></div>
+			
+	</body>
+</html>

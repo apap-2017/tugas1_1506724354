@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+	<div th:replace="fragments/fragment :: header"></div>
+		<link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<div>
+				<div th:each= "keluargaModel, iterationStatus: ${keluargaModel}">
+					<h3 th:text="'NIKK = ' + ${keluargaModel.nomor_kk}"></h3>				
+					<h3 th:text="'Alamat = ' + ${keluargaModel.alamat}"></h3>
+			       	<h3 th:text="'RT/RW = ' + ${keluargaModel.rt} + '/' + ${keluargaModel.rw}"></h3>
+			       	<h3 th:text="'Kelurahan/Desa = ' + ${kelurahanModel.nama_kelurahan}"></h3>
+			       	<h3 th:text="'Kecamatan = ' + ${kecamatanModel.nama_kecamatan}"></h3>
+			       	<h3 th:text="'Kota = ' + ${kotaModel.nama_kota}"></h3>
+		       	</div>
+		       	<table id="table_id" class="display">
+		       	<thead>
+		       		<tr>
+		       			<th>No</th>
+		       			<th>Nama Lengkap</th>
+		       			<th>NIK</th>
+		       			<th>Jenis Kelamin</th>
+		       			<th>Tempat Lahir</th>
+		       			<th>Tanggal Lahir</th>
+		       			<th>Agama</th>
+		       			<th>Pekerjaan</th>
+		       			<th>Status Perkawinan</th>
+		       			<th>Status dalam Keluarga</th>
+		       			<th>Kewarganegaraan</th>
+		       		</tr>
+		       	</thead>
+		       	<tbody>
+		       		<tr th:each ="pendudukModel, iterationStatus: ${keluargaModel.anggotaKeluarga}">
+		       			<td th:text="${iterationStatus.count}"></td>
+		       			<td th:text="${pendudukModel.nama}"></td>
+		       			<td th:text="${pendudukModel.nik}"></td>
+		       			<td th:if= "${pendudukModel.jenis_kelamin}" th:text="'Perempuan'"></td>
+		       			<td th:unless= "${pendudukModel.jenis_kelamin}" th:text="'Laki-laki'"></td>
+		       			<td th:text="${pendudukModel.tempat_lahir}"></td>
+		       			<td th:text="${pendudukModel.tanggal_lahir}"></td>
+		       			<td th:text="${pendudukModel.agama}"></td>
+		       			<td th:text="${pendudukModel.pekerjaan}"></td>
+		       			<td th:text="${pendudukModel.status_perkawinan}"></td>
+		       			<td th:text="${pendudukModel.status_dalam_keluarga}"></td>
+		       			<td th:if= "${pendudukModel.is_wni}" th:text="'WNI'"></td>
+		       			<td th:unless= "${pendudukModel.is_wni}" th:text="'WNA'"></td>		
+		       		</tr>
+		       	</tbody>
+		       	</table>
+			</div>
+			<div th:replace="fragments/fragment :: footer"></div>
+				<script type="text/javascript" charset="utf8" src="/js/jquery.dataTables.min.js"></script>
+       	
+       	<script>
+		    $(document).ready(function(){
+		        $('#table_id').DataTable();
+		    });
+	    </script>
+	</body>
+</html>

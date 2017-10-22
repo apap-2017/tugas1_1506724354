@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		
+		<form method="get">
+			<div>
+				<label for="kt">Kota</label>
+					<select name = "kt">
+						<option th:each="allKota, iterationStatus : ${allKota}" th:value="${allKota.id}" th:text="${allKota.nama_kota}" th:readonly="true"></option>
+					</select>
+			</div>
+			<div>
+				<label for="kc">Kecamatan</label>
+					<select name = "kc">
+						<option th:each="allKecamatan, iterationStatus : ${allKecamatan}" th:value="${allKecamatan.id}" th:text="${allKecamatan.nama_kecamatan}" th:readonly="true"></option>
+					</select>
+			</div>
+			<div>
+				<label for="kl">Kecamatan</label>
+					<select name = "kl">
+						<option th:each="allKelurahan, iterationStatus : ${allKelurahan}" th:value="${allKelurahan.id}" th:text="${allKelurahan.nama_kelurahan}"></option>
+					</select>
+			</div>
+			
+			<table  id="table_id" class="display">
+				<thead>
+		       		<tr>
+		       			<th>NIK</th>
+		       			<th>Nama Lengkap</th>
+		       			<th>Jenis Kelamin</th>
+		       		</tr>
+		       	</thead>
+		       	<tbody>
+		       		<tr th:each ="pendudukModel, iterationStatus: ${pendudukModel}">
+		       			<td th:text="${pendudukModel.nik}"></td>
+		       			<td th:text="${pendudukModel.nama}"></td>
+		       			<td th:if= "${pendudukModel.jenis_kelamin} == '1'" th:text="'Perempuan'"></td>
+		       			<td th:if= "${pendudukModel.jenis_kelamin} == '0'" th:text="'Laki-laki'"></td>	
+		       		</tr>
+		       	</tbody>
+		       	</table>
+		</form>
+		<div th:replace="fragments/fragment :: footer"></div>
+			<script type="text/javascript" charset="utf8" src="/js/jquery.dataTables.min.js"></script>
+       	
+       	<script>
+		    $(document).ready(function(){
+		        $('#table_id').DataTable();
+		    });
+	    </script>
+	</body>
+</html>

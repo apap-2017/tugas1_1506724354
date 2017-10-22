@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+	<div th:replace="fragments/fragment :: header"></div>
+		
+			<div>
+				<h3 th:text="'NIK = ' + ${pendudukModel.nik}"></h3>
+		       	<h3 th:text="'Nama = ' + ${pendudukModel.nama}"></h3>
+		       	<h3 th:text="'Tempat/Tanggal Lahir = ' + ${pendudukModel.tempat_lahir} + ', ' + ${pendudukModel.tanggal_lahir}">Tempat/Tanggal Lahir</h3>
+		       	<h3 th:text="'Alamat = ' + ${keluargaModel.alamat}"></h3>
+		       	<h3 th:text="'RT/RW = ' + ${keluargaModel.rt} + '/' + ${keluargaModel.rw}"></h3>
+		       	<h3 th:text="'Kelurahan/Desa = ' + ${kelurahanModel.nama_kelurahan}"></h3>
+		       	<h3 th:text="'Kecamatan = ' + ${kecamatanModel.nama_kecamatan}"></h3>
+		       	<h3 th:text="'Kota = ' + ${kotaModel.nama_kota}"></h3>
+		       	<h3 th:text="'Golongan Darah = ' + ${pendudukModel.golongan_darah}"></h3>
+		       	<h3 th:text="'Agama = ' + ${pendudukModel.agama}"></h3>
+		       	<h3 th:text="'Status Perkawinan = ' + ${pendudukModel.status_perkawinan}"></h3>
+		       	<h3 th:text="'Pekerjaan = ' + ${pendudukModel.pekerjaan}"></h3>
+		       	<h3 th:if= "${pendudukModel.is_wni} == 1" th:text="'Kewarganegaraan = WNI'"></h3>
+		       	<h3 th:if= "${pendudukModel.is_wni} == 0" th:text="'Kewarganegaraan = WNA'"></h3>		       	
+		       	<h3 th:if= "${pendudukModel.is_wafat} == 1" th:text="'Status Kematian = Wafat'"></h3>
+		       	<h3 th:if= "${pendudukModel.is_wafat} == 0" th:text="'Status Kematian = Hidup'"></h3>
+		       	<form method="post" action="/penduduk/mati">
+		       		<input type="hidden" name="nik" th:value="${pendudukModel.nik}"/>
+		       		<input type="hidden" name="id_keluarga" th:value="${pendudukModel.id_keluarga}"/>
+		       		<button type="submit" value="submit">ubah status menjadi wafat</button>
+		       	</form>
+			</div>
+		<div th:replace="fragments/fragment :: footer"></div>
+	</body>
+</html>
